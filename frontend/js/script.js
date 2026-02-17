@@ -3,7 +3,8 @@
 // const API_BASE = "https://public-scheme-navigator-production.up.railway.app/api";
 
 // For local testing (FastAPI running on 127.0.0.1:8000):
-const API_BASE = "http://127.0.0.1:8000/api";
+const API_BASE = "https://public-scheme-navigator-production.up.railway.app/api";
+
 
 // --- Navigation Handling ---
 document.querySelectorAll(".nav-link").forEach(link => {
