@@ -4,6 +4,7 @@
 
 // For local testing (FastAPI running on 127.0.0.1:8000):
 const API_BASE = "http://127.0.0.1:8000";
+fetch("https://public-scheme-navigator-xqwr.onrender.com/chatbot")
 
 // --- Add message to chat window ---
 function addMessage(text, sender) {
