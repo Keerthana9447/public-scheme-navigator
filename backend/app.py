@@ -11,8 +11,9 @@ app = FastAPI(title="Public Scheme Navigator")
 # --- Initialize RAG pipeline ---
 rag = RAGPipeline()
 
-# --- Serve frontend files at /frontend ---
-app.mount("/frontend", StaticFiles(directory="frontend", html=True), name="frontend")
+# --- Serve frontend files at root ---
+# Visiting /eligibility, /guidance, /chat will load frontend HTML/JS
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 # --- Allow frontend requests (CORS) ---
 app.add_middleware(
@@ -23,13 +24,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- Root endpoint ---
-@app.get("/")
-def root():
-    return {"message": "Backend is running!"}
-
-# --- Eligibility Checker ---
-@app.get("/eligibility")
+# --- Eligibility API ---
+@app.get("/api/eligibility")
 def check_eligibility(
     age: int = Query(...),
     income: int = Query(...),
@@ -54,8 +50,8 @@ def check_eligibility(
         "eligible_schemes": []
     }
 
-# --- Document Guidance ---
-@app.get("/guidance")
+# --- Guidance API ---
+@app.get("/api/guidance")
 def get_guidance(scheme: str = Query(...)):
     guidance_map = {
         "Scholarship for Students": [
@@ -85,12 +81,11 @@ def get_guidance(scheme: str = Query(...)):
     }
     return {"scheme": scheme, "documents": guidance_map.get(scheme, ["No guidance available"])}
 
-# --- Chatbot ---
-@app.get("/chat")
+# --- Chatbot API ---
+@app.get("/api/chat")
 def chat(query: str):
     response = rag.generate_answer(query)
 
-    # Try to extract age and income from query text
     age_match = re.search(r"\b(\d{1,2})\b", query.lower())
     income_match = re.search(r"\b(\d{4,6})\b", query)
 
