@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Eligibility Checker</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/eligibility.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Eligibility Checker</h1>
+  </header>
+
+  <section class="hero">
+    <h2>Check Your Eligibility</h2>
+    <p>Enter your details to see which schemes you qualify for.</p>
+  </section>
+
+  <div class="card">
+    <form id="eligibility-form">
+      <label>Age: <input type="number" id="age" required></label>
+      <label>Income: <input type="number" id="income" required></label>
+      <label>Gender:
+        <select id="gender" required>
+          <option value="">-- Select Gender --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <label>Occupation: <input type="text" id="occupation"></label>
+      <label>Scheme:
+        <select id="scheme">
+          <option value="Scholarship for Students">Scholarship for Students</option>
+          <option value="Senior Citizen Pension">Senior Citizen Pension</option>
+          <option value="Healthcare Subsidy">Healthcare Subsidy</option>
+          <option value="Disability Support Scheme">Disability Support Scheme</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="disability"> Disability</label>
+      <button type="submit">Check</button>
+    </form>
+    <div id="results"></div>
+  </div>
+</body>
+</html>
