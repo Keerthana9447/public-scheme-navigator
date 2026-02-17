@@ -1,6 +1,6 @@
 // --- API Base URL ---
 // For production (deployed on Vercel):
-// const API_BASE = "https://public-scheme-navigator.vercel.app";
+// const API_BASE = "https://public-scheme-navigator-xqwr.onrender.com";
 
 // For local testing (FastAPI running on 127.0.0.1:8000):
 const API_BASE = "http://127.0.0.1:8000";
@@ -59,3 +59,4 @@ document.getElementById("eligibility-form").addEventListener("submit", async (ev
     resultsDiv.innerText = "⚠️ Error fetching eligibility from backend.";
   }
 });
+
